@@ -23,13 +23,12 @@
           <input type="text" class="form-control" placeholder="search-products" [(ngModel)]="searchTerm" (keyup)="search($event)">
         </div>
         <span class="fas fa-search search-icon"></span>
-        <button class="btn btn-primary" routerLink="/cart">
+        <button class="btn btn-primary btn-nav" routerLink="/cart">
           <i class="fas fa-cart-plus mx-3"></i>
           <div class="badge bg-danger" style="font-size: 10px;">{{totalItem}}</div>
         </button>
-        
         <ul class="navbar-nav nav-margin">
-          <li><a routerLink="/dashboard" class="btn btn-outline-light active mx-5 my-3 me-md-2">DashBoard</a></li>
+          <li><a routerLink="/dashboard" class="btn btn-outline-light active  my-3">DashBoard</a></li>
           <!-- <li><a routerLink="/Cart" class="btn btn-outline-light mx-3 my-3">Cart</a></li> -->
           <li><a class="btn btn-outline-light mx-5 my-3" (click)="logout()">Logout</a></li>
         </ul>

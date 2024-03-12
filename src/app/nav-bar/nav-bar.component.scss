@@ -31,6 +31,60 @@ strong{
 i{
     font-size: 20px;
 }
-.nav-margin{
-    margin-left:20% ;
+// .nav-margin{
+//     margin-left:20% ;
+// }
+@media (max-width:1200px) {
+    .nav-margin{
+        display: -webkit-inline-box;
+    }
+    .search-icon{
+        top:38%;
+        display: none;
+    }
+    .form-control{
+        width: 100%;
+        margin:10px;
+        padding: 10px;
+    }
+    // input{
+    //     width: 100%;
+    //     margin: 20px;
+    // }
+    .btn-nav{
+        display: -webkit-inline-box;
+    }
 }
+/* Media query for smaller screens */
+// @media (max-width: 768px) {
+//     .form-group {
+//       width: 100%;
+//       margin-bottom: 10px;
+//     }
+  
+//     .search-icon {
+//       display: none;
+//     }
+  
+//     .btn-nav {
+//       margin-top: 10px;
+//     }
+  
+//     .navbar-nav {
+//       flex-direction: column;
+//     }
+  
+//     .nav-margin {
+//       margin-top: 10px;
+//     }
+  
+//     .navbar-nav li {
+//       margin: 5px 0;
+//     }
+  
+//     .navbar-nav li a {
+//       width: 100%;
+//       text-align: center;
+//     }
+//   }
+  

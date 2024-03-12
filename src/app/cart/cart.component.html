@@ -14,7 +14,7 @@
 </ng-container>
 <ng-container *ngIf="products.length !=0">
     <div class="container">
-        <div class="card-table">
+        <div class="cart-table">
             <div class="cart-product">
                 <table class="table table-responsive">
                     <thead>
@@ -33,7 +33,7 @@
                         <tr *ngFor="let item of products let i = index">
                             <td>{{i+1}}</td>
                             <td>{{item.title}}</td>
-                            <td><img src="{{item.image}}" alt=""></td>
+                            <td><img src="{{item.image}}" alt="" class="table-img"></td>
                             <td>{{item.description}}</td>
                             <td>{{item.price*10}}</td>
                             <td>{{item.quantity}}</td>
@@ -43,7 +43,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4"></td>
+                            <td colspan=""></td>
                             <td><button class="btn btn-danger" (click)="emptyCart()">EmptyCart</button></td>
                             <td><button class="btn btn-primary" routerLink="/dashboard">ShopMore</button></td>
                             <td><button class="btn btn-success">Checkout</button></td>

@@ -16,3 +16,45 @@ img{
 h4,h6{
     font-weight: 400;
 }
+table{
+    margin: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 10px; 
+        position: relative;
+    }
+    
+    .cart-table {
+        overflow-x: auto;
+    }
+
+    .table-img {
+        width: 100%; 
+        max-width: 100px; 
+        height: auto; 
+    }
+
+    .cart-table table th,
+    .cart-table table td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+    img{
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .cart-table table th {
+        font-size: 14px;
+    }
+}
+
+
+
+
