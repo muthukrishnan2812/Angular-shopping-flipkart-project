@@ -1,0 +1,57 @@
+<ng-container *ngIf="products.length ==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="cart-title">My cart</h5>
+        </div>
+        <div class="center">
+            <img src="https://img.freepik.com/free-vector/man-shopping-supermarket_74855-7612.jpg?w=740&t=st=1710147633~exp=1710148233~hmac=2ac3d523e279e779dd59b7365d38614a8dc01e3a1633bdcb4f8c8b7ce63416b8"
+                alt="">
+            <h4>Your Cart is empty!</h4>
+            <h6>Add item to it now</h6>
+           <button class="btn btn-primary" routerLink="/dashboard">ShopNow</button>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="products.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>ProductName</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.title}}</td>
+                            <td><img src="{{item.image}}" alt=""></td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.price*10}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.total*10}}</td>
+                            <td>
+                                <button (click)="removeItem(item)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button class="btn btn-danger" (click)="emptyCart()">EmptyCart</button></td>
+                            <td><button class="btn btn-primary" routerLink="/dashboard">ShopMore</button></td>
+                            <td><button class="btn btn-success">Checkout</button></td>
+                            <td>GrandTotal:{{grandTotal*10 | currency:'INR'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>

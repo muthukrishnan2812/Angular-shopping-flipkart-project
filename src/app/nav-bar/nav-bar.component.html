@@ -1,0 +1,58 @@
+<nav class="navbar bg-primary navbar-expand-lg">
+  <div class="container-fluid">
+    <a  routerLink="/dashboard" class="navbar-brand"><i class="fas fa-shipping-fast" style="font-size: 40px;"></i><strong
+        class="mx-3">Flipkart</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ng-container *ngIf="this.auth.isAuthenticated(); then authenticated; else notauthenticated;">
+
+      </ng-container>
+
+      <ng-template #notauthenticated>
+        <ul class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
+          <li><a routerLink="/login" class="btn btn-outline-light mx-5">Login</a></li>
+          <li><a routerLink="/register" class="btn btn-outline-light ">Register</a></li>
+        </ul>
+      </ng-template>
+
+      <ng-template #authenticated>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="search-products" [(ngModel)]="searchTerm" (keyup)="search($event)">
+        </div>
+        <span class="fas fa-search search-icon"></span>
+        <button class="btn btn-primary" routerLink="/cart">
+          <i class="fas fa-cart-plus mx-3"></i>
+          <div class="badge bg-danger" style="font-size: 10px;">{{totalItem}}</div>
+        </button>
+        
+        <ul class="navbar-nav nav-margin">
+          <li><a routerLink="/dashboard" class="btn btn-outline-light active mx-5 my-3 me-md-2">DashBoard</a></li>
+          <!-- <li><a routerLink="/Cart" class="btn btn-outline-light mx-3 my-3">Cart</a></li> -->
+          <li><a class="btn btn-outline-light mx-5 my-3" (click)="logout()">Logout</a></li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->

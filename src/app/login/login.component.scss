@@ -1,0 +1,25 @@
+div{
+    // background-color: #1e7909;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+}
+.form{
+    border: 5px solid black;;
+    height:40%;
+    width: 30%;
+    margin: 10% 25% 0 35%;
+    padding: 10px;
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+}
+
+@media (max-width:600px) {
+    .form{
+        height: fit-content;
+        width: fit-content;
+        margin:5% 20% 0 20%;
+        padding: 10px;
+    }
+}
