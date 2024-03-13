@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit{
       },
       error: err => {
         console.error('Registration failed:', err);
-        // Handle error here, e.g., display an error message to the user
       }
     })
   }

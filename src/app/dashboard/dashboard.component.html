@@ -37,7 +37,7 @@
                 <img src="{{item.image}}" alt="" class="img-cart">
                 <h5 class="h5">{{item.title}}</h5>
                 <p class="h5">{{item.description}}</p>
-                <p>Price:<strong>{{item.price*10| currency:'INR'}}</strong></p>
+                <p class="price">Price:<strong>{{item.price*10| currency:'INR'}}</strong></p>
                 <div class="btn btn-primary" (click)="addToCart(item)">Add to Cart</div>
             </div>
         </ng-container>
