@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable,PLATFORM_ID, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map } from 'rxjs';
-
+import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +11,14 @@ export class AuthService {
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient,@Inject(PLATFORM_ID) private platformId:Object) { }
 
   isAuthenticated(): boolean {
-    if (sessionStorage.getItem('token') !== null) {
-      return true;
+    // Ensure the code only accesses sessionStorage when running in the browser
+    if (isPlatformBrowser(this.platformId)) {
+      return sessionStorage.getItem('token') !== null;
     }
+    // Return false by default if the code runs on the server
     return false;
   }
   canAccess() {
