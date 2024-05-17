@@ -1,38 +1,46 @@
 <nav class="navbar bg-primary navbar-expand-lg">
   <div class="container-fluid">
-    <a  routerLink="/dashboard" class="navbar-brand"><i class="fas fa-shipping-fast fd-size"></i><strong
+    <a routerLink="/dashboard" class="navbar-brand"><i class="fas fa-shipping-fast fd-size"></i><strong
         class="mx-3">Flipkart</strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ng-container *ngIf="this.auth.isAuthenticated(); then authenticated; else notauthenticated;">
+
+      @if (auth.isAuthenticated()) {
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="search-products" [(ngModel)]="searchTerm"
+          (keyup)="search($event)">
+      </div>
+      <span class="fas fa-search search-icon"></span>
+      <button class="btn btn-primary btn-nav" routerLink="/cart">
+        <i class="fas fa-cart-plus mx-3"></i>
+        <div class="badge bg-danger badge-size">{{totalItem}}</div>
+      </button>
+      <ul class="navbar-nav nav-margin">
+        <li><a routerLink="/dashboard" class="btn btn-outline-light active  my-3">DashBoard</a></li>
+        <!-- <li><a routerLink="/Cart" class="btn btn-outline-light mx-3 my-3">Cart</a></li> -->
+        <li><a class="btn btn-outline-light mx-5 my-3" (click)="logout()">Logout</a></li>
+      </ul>
+
+      }@else {
+      <ul class="navbar-nav nav-margin my-3">
+        <li><a routerLink="/login" class="btn btn-outline-light mx-5">Login</a></li>
+        <li><a routerLink="/register" class="btn btn-outline-light mx-5 ">Register</a></li>
+      </ul>
+      }
+      <!-- <ng-container *ngIf="this.auth.isAuthenticated(); then authenticated; else notauthenticated;">
 
       </ng-container>
-
       <ng-template #notauthenticated>
         <ul class="navbar-nav nav-margin my-3">
           <li><a routerLink="/login" class="btn btn-outline-light mx-5">Login</a></li>
           <li><a routerLink="/register" class="btn btn-outline-light mx-5 ">Register</a></li>
         </ul>
-      </ng-template>
+      </ng-template> -->
 
-      <ng-template #authenticated>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="search-products" [(ngModel)]="searchTerm" (keyup)="search($event)">
-        </div>
-        <span class="fas fa-search search-icon"></span>
-        <button class="btn btn-primary btn-nav" routerLink="/cart">
-          <i class="fas fa-cart-plus mx-3"></i>
-          <div class="badge bg-danger badge-size">{{totalItem}}</div>
-        </button>
-        <ul class="navbar-nav nav-margin">
-          <li><a routerLink="/dashboard" class="btn btn-outline-light active  my-3">DashBoard</a></li>
-          <!-- <li><a routerLink="/Cart" class="btn btn-outline-light mx-3 my-3">Cart</a></li> -->
-          <li><a class="btn btn-outline-light mx-5 my-3" (click)="logout()">Logout</a></li>
-        </ul>
-      </ng-template>
+
     </div>
   </div>
 </nav>

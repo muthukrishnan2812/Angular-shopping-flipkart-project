@@ -4,6 +4,14 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
+import helmet from 'helmet';
+import { connect } from 'node:http2';
+
+type SourceList = string[];
+function getTrustedSources(): SourceList {
+  // Example trusted sources, normally this could be dynamic or from a config file
+  return ['https://trustedcdn.com', 'https://api.trustedsource.org'];
+}
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -41,6 +49,45 @@ export function app(): express.Express {
   });
 
   return server;
+}
+export default function contentSecurityPolicy(nonce:any){
+  const trustedSources = getTrustedSources();
+
+  return helmet.contentSecurityPolicy({
+    directives:{
+      defaultSrc:[...trustedSources],
+      styleSrc:[
+        `'nonce-${nonce}'`,
+        'https://fonts.googleapis.com',
+        'https://cdn.jsdelivr.net',
+        ...trustedSources
+      ],
+      scriptSrc:[
+        `'nonce-${nonce}`,
+        'https://cdn.jsdelivr.net',
+        ...trustedSources
+      ],
+      scriptSrcElem:[
+        `'nonce-${nonce}'`,
+        'https://cdn.jsdelivr.net',
+        'https://kit.fontawesome.com',
+        ...trustedSources
+      ],
+      fontSrc:[
+        `'nonce-${nonce}'`,
+        'https://cdn.jsdelivr.net',
+        'https://ka-f.fontawesome.com',
+        ...trustedSources
+      ],
+      connectSrc:[
+        `'nonce-${nonce}'`,
+        'https://identitytoolkit.googleapis.com',
+        'https://ka-f.fontawesome.com',
+        'https://fakestoreapi.com/products/',
+        ...trustedSources
+      ]
+    }
+  })
 }
 
 function run(): void {

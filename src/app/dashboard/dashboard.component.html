@@ -7,14 +7,14 @@
             </a>
         </div>
         <div class="item mx-3 my-2">
-            <a (click)="filter('electronics')"> 
+            <a (click)="filter('electronics')">
                 <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt="" class="img">
                 <h6>Electronics</h6>
             </a>
         </div>
         <div class="item mx-3 my-2">
-            <a (click)="filter('fashion')"> 
+            <a (click)="filter('fashion')">
                 <img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt="" class="img">
                 <h6>Fashion</h6>
@@ -32,7 +32,8 @@
 
 <div class="container">
     <div class="row">
-        <ng-container *ngFor="let item of filterCategory | filter:searchKey:'title'">
+        @for (item of (filterCategory | filter:searchKey:'title'); track item) {
+        <ng-container>
             <div class="card col-md-3">
                 <img src="{{item.image}}" alt="" class="img-cart">
                 <h5 class="h5">{{item.title}}</h5>
@@ -41,5 +42,6 @@
                 <div class="btn btn-primary" (click)="addToCart(item)">Add to Cart</div>
             </div>
         </ng-container>
+        }
     </div>
 </div>
