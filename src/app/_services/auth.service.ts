@@ -3,11 +3,14 @@ import { Inject, Injectable,PLATFORM_ID, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+// import {googleAuthProvider}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public cartItemList: any[] = [];
+  //behaviour subject -> maintain the current value
+  //behaviourSubject -> pass a value and emits a data , act as a subscriber,  as an observerable () any one as subscriber whatever data will be emited  
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
 
@@ -52,6 +55,8 @@ export class AuthService {
       }))
   }
   getProducts(){
+    //asObservable -> productList a behaviour subject it was passing and emits the data , using asObservable was helps to emit the data...
+    // use subscribe to get the data in cart...
     return this.productList.asObservable();
   }
   setProduct(product: any) {

@@ -7,8 +7,8 @@ import { AuthService } from '../_services/auth.service';
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent implements OnInit {
-public totalItem:number=0
-public searchTerm !:string;
+public totalItem:number=0 //totalITem -> display the length of the item in the cart page...
+public searchTerm :string='';
   constructor(public auth:AuthService){}
   ngOnInit(): void {
     this.auth.getProducts()
@@ -24,7 +24,5 @@ public searchTerm !:string;
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm);
     this.auth.search.next(this.searchTerm);
-    
   }
-
 }

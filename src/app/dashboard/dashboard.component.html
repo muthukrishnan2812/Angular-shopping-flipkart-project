@@ -32,6 +32,7 @@
 
 <div class="container">
     <div class="row">
+        <!-- filter -> is a pipe, searchKey -> behaviour Subject is (from auth.service.ts) , title -> value get from api -->
         @for (item of (filterCategory | filter:searchKey:'title'); track item) {
         <ng-container>
             <div class="card col-md-3">
